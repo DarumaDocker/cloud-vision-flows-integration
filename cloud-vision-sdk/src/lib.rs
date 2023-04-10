@@ -62,6 +62,17 @@ extern "C" {
 ///
 /// Return the detected text.
 ///
+/// Example:
+///
+/// Take a picture from Internet, such as
+/// "https://bullzeyedesign.com/wp-content/uploads/famous_textbased_logos.jpg".
+/// If we pass the base64 encoded content of this image,
+/// then the result should be:
+/// Ok("Coca-Cola DISNEY Google\nFedEx ebay Kleenex")
+/// If the content can't be recognized as an image by Cloud Vision,
+/// then the result would be something like:
+/// Err("Error: 13 INTERNAL: Request message serialization failure: invalid encoding")
+///
 pub fn text_detection(image_base64: String) -> Result<String, String> {
     unsafe {
         let mut flows_user = Vec::<u8>::with_capacity(100);
